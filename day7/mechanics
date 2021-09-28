@@ -1,0 +1,9 @@
+Blackjac rules / 21
+
+1. Rules
+	-get as closest as possible to 21 in summation.
+	-if you get a number over 21 you loose oppponent wins -> it's called Bust (and you loose immediately)
+2. Cards scoring
+	-2,3,4,5,6,7,8,9,10 -> normally counted as their index number
+	- J (Jack), Q (Quenn), K (King) -> 10 points
+	- A (As) -> Could be 1 or 10 points -> you actually decided (as long as your score is before 21)
