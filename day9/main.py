@@ -1,7 +1,8 @@
 import art
 import game_data
+import random
 
-print(art.go)
+#print(art.go)
 #print(art.vs)
 
 
@@ -19,4 +20,29 @@ Link to a game: https://replit.com/@appbrewery/higher-lower-final?embed=1&output
 
     Else return False -> Show numnber of points
 3. Create a function adding a point
-4. 
+
+'''
+
+def generate_rivals(database: list) -> list:
+    rivals = []
+    for i in range(2):
+        opt = random.choice(database)
+        rivals.append(opt)
+
+    return rivals
+
+def display_them(rivals: list):
+    print(f"{rivals[0]['name']}, a {rivals[0]['description']}, from {rivals[0]['country']}")
+    print(art.vs)
+    print(f"{rivals[1]['name']}, a {rivals[1]['description']}, from {rivals[1]['country']}")
+    
+
+def compare_rivals(rivals: list):
+    for score in rivals:
+        print(score["follower_count"])
+
+
+rivals = generate_rivals(game_data.data)
+display_them(rivals)
+
+compare_rivals(rivals)
