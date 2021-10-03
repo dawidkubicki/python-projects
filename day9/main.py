@@ -23,6 +23,7 @@ Link to a game: https://replit.com/@appbrewery/higher-lower-final?embed=1&output
 
 '''
 
+#generate rivals and return list of two of them
 def generate_rivals(database: list) -> list:
     rivals = []
     for i in range(2):
@@ -31,18 +32,59 @@ def generate_rivals(database: list) -> list:
 
     return rivals
 
+#show the rivals
 def display_them(rivals: list):
     print(f"{rivals[0]['name']}, a {rivals[0]['description']}, from {rivals[0]['country']}")
     print(art.vs)
     print(f"{rivals[1]['name']}, a {rivals[1]['description']}, from {rivals[1]['country']}")
     
+def compare_rivals(rivals: list, usr_choice: str):
+    score_A = int(rivals[0]['follower_count'])
+    score_B = int(rivals[1]['follower_count'])
 
-def compare_rivals(rivals: list):
-    for score in rivals:
-        print(score["follower_count"])
+    if usr_choice=="a":
+        if score_A > score_B:
+            return True
+        else:
+            return False
+
+    elif usr_choice=="b":
+        if score_A < score_B:
+            return True
+        else:
+            return False
+
+def game():
+
+    score = 0
+    play= True
+
+    while play:
+
+        rivals = generate_rivals(game_data.data)
+        display_them(rivals)
+        usr_choice = input("Who has more followers? Type 'A' or 'B': ")
+
+        if compare_rivals(rivals, usr_choice):
+            score += 1
+            print(f"You are right! Current score: {score}.")
+    
+        elif compare_rivals(rivals, usr_choice)==False:
+            print(f"Sorry, that's wrong. Final score: {score}.")
+            play = False
+
+    decision = input("If you want to play again type 'yes' or 'no': ")
+    if decision == "yes":
+        play = True
+    else:
+        play = False
+        running_program = False
+
+running_program = True
+
+while running_program: 
+    game()
 
 
-rivals = generate_rivals(game_data.data)
-display_them(rivals)
 
-compare_rivals(rivals)
+
