@@ -29,3 +29,20 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
+
+'''
+espresso -> $1.50 :
+    50ml water
+    18g coffee 
+    
+latte -> $2.50 :
+    200ml water
+    24g coffee
+    150ml milk     
+    
+cappuccino -> $3.00 :
+    250ml water
+    24g coffee
+    100ml milk    
+    
+'''
