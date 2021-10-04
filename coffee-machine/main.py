@@ -4,8 +4,8 @@ from data import resources
 # https://replit.com/@appbrewery/coffee-machine-final?embed=1&output=1#main.py
 
 turned_on = True
-money = 0.0
 
+money = 0.0
 water = resources['water']
 milk = resources['milk']
 coffee = resources['coffee']
@@ -14,7 +14,6 @@ coffee = resources['coffee']
 def check_sufficent(coffee_price: int):
 
     change = 0.0
-    global money
 
     q = int(input("how many quarters: "))
     d = int(input("how many dimes: "))
@@ -27,7 +26,6 @@ def check_sufficent(coffee_price: int):
 
             change = usr_money - coffee_price
             print(f"Here is ${change} in change.")
-            money+=coffee_price
 
             return True
 
@@ -37,10 +35,10 @@ def check_sufficent(coffee_price: int):
         return False
 
 
-def usr_Order():
-    opt = str(input("What would you like? (espresso/latte/cappuccino): "))
 
-    global water, milk, coffee, money
+while turned_on:
+
+    opt = str(input("What would you like? (espresso/latte/cappuccino): "))
 
     if opt == "report":
         print(f"Water: {water}ml\n"
@@ -52,8 +50,11 @@ def usr_Order():
 
         if water >= 50 and coffee >=18:
             if check_sufficent(coffee_price=1.50):
+                #TODO: add change resources function here
                 water -= 50
                 coffee -= 18
+                money += 1.50
+
 
         else:
             if water < 50:
@@ -67,10 +68,11 @@ def usr_Order():
     elif opt == "latte":
         if water >= 200 and coffee >= 24 and milk >= 150:
             if check_sufficent(coffee_price=2.50):
+                #TODO: add change resources function here
                 water -= 200
                 coffee -= 24
                 milk -= 150
-
+                money += 2.50
         else:
             if water < 200:
                 print("Sorry there is not enough water")
@@ -83,10 +85,12 @@ def usr_Order():
 
     elif opt == "cappucino":
         if water >= 250 and coffee >= 24 and milk >= 100:
-            if check_sufficent(coffee_price=2.50):
+            if check_sufficent(coffee_price=3.00):
+                #TODO: add change resources function here
                 water -= 250
                 coffee -= 24
                 milk -= 100
+                money += 3.50
 
         else:
             if water < 250:
@@ -99,21 +103,18 @@ def usr_Order():
                 print("Sorry there is not enough water, coffee, milk")
 
     elif opt == "off":
-        global turned_on
+        #TODO: turn off the program
         turned_on = False
 
     else:
         print("Wrong command!")
 
-while turned_on:
-    usr_Order()
+
+    # print(f"Water: {water}ml\n"
+    #       f"Milk: {milk}ml\n"
+    #       f"Coffee: {coffee}g\n"
+    #       f"Money: ${money}\n")
 
 if turned_on == False:
     print("End of the program")
 
-
-
-# TODO:2 Make order and update resources
-# TODO:3 Check resources sufficient do due usr_Order function
-# TODO:4 Process coins -> quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
-# TODO:5 Check the transaction successful
