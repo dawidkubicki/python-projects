@@ -34,7 +34,8 @@ while is_race_on:
             if winning_color == user_bet:
                 print(f"You won! Turtle {winning_color} was first.")
             else:
-                print(f"You lost :( \n  Turtle {winning_color} was first.")
+                print(f"You lost :( \nTurtle {winning_color} was first.")
+    tim.right(10)
             is_race_on = False
         else:
             rand_distance = random.randint(0, 10)
