@@ -5,14 +5,21 @@ def get_names():
     names = []
     with open("./Input/Names/invited_names.txt", "r") as f:
         words = f.read()
-        for name in words.split():
-            names.append(name)
+        for each_name in words.split():
+            names.append(each_name)
         return names
 
-for name in get_names():
-    with open(f"./Output/ReadyToSend/letter_for_{name}.txt", "w+") as f:
-        f.write("test")
 
+def replace_text(recipient: str):
+    with open("./Input/Letters/starting_letter.txt", "r") as f:
+        text = f.read()
+        ready_text = text.replace("[name]", recipient)
+        return ready_text
+
+
+for name in get_names():
+    with open(f"./Output/ReadyToSend/letter_for_{name}.txt", "w+") as g:
+        g.write(replace_text(name))
 
 # for each name in invited_names.txt
 # Replace the [name] placeholder with the actual name.
